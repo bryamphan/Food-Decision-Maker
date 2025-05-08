@@ -16,28 +16,23 @@ DEFAULT_CATEGORIES = [
 def pick_random_craving():
     return random.choice(DEFAULT_CATEGORIES)
 
-@app.route("/", methods=["GET", "POST"])
-def index():
+# Page 1 (Landing Page)
+@app.route("/", methods=["GET"])
+def landing():
+    return render_template("landing.html")
+
+# Page 2 (Search Page)
+@app.route("/search", methods=["GET", "POST"])
+def search():
     spots = None
     craving = ""
     location = ""
     if request.method == "POST":
-        craving = request.form.get("craving", "").strip()
-        location = request.form.get("location", "").strip()
-
-        # fallback if they left craving blank
-        if not craving:
-            craving = pick_random_craving()
-
-        # fallback if they left location blank
-        if not location:
-            location = "San Francisco, CA"
-
-        # fetch up to 20 and we'll show top 5
+        craving = request.form.get("craving", "").strip() or pick_random_craving()
+        location = request.form.get("location", "").strip() or "San Francisco, CA"
         spots = search_spots(craving, location, limit=20)
-
     return render_template(
-        "index.html",
+        "search.html",
         spots=spots,
         craving=craving,
         location=location

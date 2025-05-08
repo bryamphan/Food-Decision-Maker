@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- your custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+
+  <title>The Sushi Stroll</title>
+  <style>
+    :root {
+      background-image: url("https://cdnb.artstation.com/p/assets/images/images/066/149/065/original/killer-rabbit-media-chinese-alleyway-export.gif?1692171513");
+      background-size: 1460px 1040px;
+      background-position-y: -250px;
+    }
+  </style>
+
+  <script>
+    var tick = new Audio();
+    tick.src = "{{ url_for('static', filename='music/tickkk.mp3') }}";
+  </script>
+</head>
+<body>
+  <h1 class="title">The Sushi Stroll</h1>
+  <p class="pictureCaption">Where shall your stroll take you? Discover now!</p>
+  <div class="container">
+    <!-- note: this goes to the /search route -->
+    <button class="startButton"
+            onclick="tick.play(); window.location.href='{{ url_for('search') }}'">
+      START
+    </button>
+  </div>
+
+  <audio autoplay loop>
+    <source src="{{ url_for('static', filename='music/mochi.mp3') }}"
+            type="audio/mp3">
+  </audio>
+</body>
+</html>

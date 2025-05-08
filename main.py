@@ -1,4 +1,5 @@
 # main.py
+# used for when this was a terminal project, doesn't run on web server
 import random
 from yelp_client import search_spots
 

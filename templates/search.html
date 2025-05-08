@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <title>Food Decision Maker</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
   <h1>Where Should I Eat?</h1>
 
-  <form method="POST" class="search-form">
+  <form method="POST">
     <div>
-      <label>Craving (leave blank for me to pick):</label><br>
-      <input type="text" name="craving" value="{{ craving }}">
+      <label>Craving (leave blank for random):</label><br>
+      <input type="text" name="craving" value="{{ craving or '' }}">
     </div>
     <div>
       <label>Location (city or ZIP):</label><br>
-      <input type="text" name="location" value="{{ location }}">
+      <input type="text" name="location" value="{{ location or '' }}">
     </div>
     <button type="submit">Find Spots</button>
   </form>
 
   {% if spots is not none %}
     {% if spots %}
-      <h2>Top 5 spots for "{{ craving }}" in {{ location }}:</h2>
+      <h2>Top 5 spots for “{{ craving }}” in {{ location }}:</h2>
       <ol>
         {% for biz in spots[:5] %}
           <li>
