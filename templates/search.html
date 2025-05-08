@@ -7,23 +7,23 @@
         href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-  <h1>Where Should I Eat?</h1>
+  <h1>Where's your next spot?</h1>
 
   <form method="POST">
     <div>
-      <label>Craving (leave blank for random):</label><br>
+      <label>What are you craving? Anything specific? (leave blank for random):</label><br>
       <input type="text" name="craving" value="{{ craving or '' }}">
     </div>
     <div>
-      <label>Location (city or ZIP):</label><br>
+      <label>Where are you currently located? (city or ZIP):</label><br>
       <input type="text" name="location" value="{{ location or '' }}">
     </div>
-    <button type="submit">Find Spots</button>
+    <button type="submit">SEARCH SPOTS</button>
   </form>
 
   {% if spots is not none %}
     {% if spots %}
-      <h2>Top 5 spots for “{{ craving }}” in {{ location }}:</h2>
+      <h2>Top 5 spots for "{{ craving }}" in "{{ location }}":</h2>
       <ol>
         {% for biz in spots[:5] %}
           <li>

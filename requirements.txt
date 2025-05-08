@@ -1,4 +1,0 @@
-# requirements.txt (things needed for program)
-requests
-python-dotenv
-flask
