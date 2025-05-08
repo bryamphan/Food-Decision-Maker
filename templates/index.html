@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Food Decision Maker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <h1>Where Should I Eat?</h1>
+
+  <form method="POST" class="search-form">
+    <div>
+      <label>Craving (leave blank for me to pick):</label><br>
+      <input type="text" name="craving" value="{{ craving }}">
+    </div>
+    <div>
+      <label>Location (city or ZIP):</label><br>
+      <input type="text" name="location" value="{{ location }}">
+    </div>
+    <button type="submit">Find Spots</button>
+  </form>
+
+  {% if spots is not none %}
+    {% if spots %}
+      <h2>Top 5 spots for "{{ craving }}" in {{ location }}:</h2>
+      <ol>
+        {% for biz in spots[:5] %}
+          <li>
+            <strong>{{ biz.name }}</strong><br>
+            {{ biz.location.display_address|join(', ') }}
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <p>No results—try a different term or location.</p>
+    {% endif %}
+  {% endif %}
+</body>
+</html>
