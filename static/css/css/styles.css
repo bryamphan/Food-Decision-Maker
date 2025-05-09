@@ -1,0 +1,59 @@
+/* Allows window to resize */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin-top: 2vh;
+}
+
+.title {
+  font-size: 8vw;
+  margin: 0;
+  color: white;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.pictureCaption {
+  font-size: 4vw;   
+  margin: 1vh 0;
+}
+
+.startButton {
+  font-size: 3vw;       /* responsive text */
+  padding: 1vh 2vw;     /* vertical/horizontal padding */
+  border: none;
+  border-radius: 0.5vw; /* radius scales too */
+  cursor: pointer;
+}
+
+/* Pulsating glow from text */
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 5px rgba(255,255,255,0.8),
+      0 0 10px rgba(255,255,255,0.6),
+      0 0 20px rgba(255,0,150,0.6),
+      0 0 30px rgba(255,0,150,0.4);
+  }
+  to {
+    text-shadow:
+      0 0 10px rgba(255,255,255,1),
+      0 0 20px rgba(255,0,150,0.8),
+      0 0 30px rgba(255,0,150,0.6),
+      0 0 40px rgba(255,0,150,0.4);
+  }
+}

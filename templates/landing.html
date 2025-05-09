@@ -5,15 +5,17 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
   <!-- Website Top Name -->
   <title>Food Decision Maker</title>
 </head>
 <style>
   body {
-    background: url("{{ url_for('static', filename='images/coffee.gif') }}")
-                    no-repeat center center fixed;
+    background: url("https://i.pinimg.com/originals/c9/c6/13/c9c6133dced7392e131f9bd582d7d93c.gif");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 
     display: flex;
     flex-direction: column;
